@@ -106,7 +106,7 @@ public class MessageProcessor implements RejectableRunnable {
         response.headers().set(headers);
 
         if (responseStatus != HttpResponseStatus.NO_CONTENT) {
-            final ByteBuf payload = Unpooled.wrappedBuffer("ok".getBytes(UTF8_CHARSET));
+            final ByteBuf payload = Unpooled.wrappedBuffer("{\"ok\": true}".getBytes(UTF8_CHARSET));
             response.headers().set(HttpHeaderNames.CONTENT_LENGTH, payload.readableBytes());
             response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain");
             response.content().writeBytes(payload);
